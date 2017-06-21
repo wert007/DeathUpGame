@@ -1,6 +1,6 @@
 /**
  * 
- * @author phamacher
+ * @author phamacher (actually not)
  *
  */
 public class Node implements Comparable{

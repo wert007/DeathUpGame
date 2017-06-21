@@ -49,7 +49,7 @@ public class DeathUpGame extends BasicGame {
 	}
 
 	/**
-	 * initializes the game, load static recources
+	 * initializes the game, load static resources
 	 * 
 	 * @param gc GameContainer contains the informations of the game
 	 */
@@ -98,6 +98,7 @@ public class DeathUpGame extends BasicGame {
 		map.update(gc, delta);
 		
 	}
+	
 	
 	public static void main(String[] args) throws SlickException {
 		AppGameContainer deathUp = new AppGameContainer(new DeathUpGame("Death Up"));

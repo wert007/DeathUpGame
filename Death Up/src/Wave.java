@@ -39,6 +39,10 @@ public class Wave {
 		}
 	}
 	
+	/**
+	 * Returns all living enemies current in game
+	 * @return All enemies alive
+	 */
 	public Enemy[] getEnemies()
 	{
 		//TODO Really?

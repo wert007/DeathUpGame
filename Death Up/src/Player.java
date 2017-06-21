@@ -67,11 +67,6 @@ public class Player extends GameObject {
 		accelerate(new Vector2f(0, SPEED * delta / 1000.0f));
 	}
 	
-	public void setRotation(float rotation)
-	{
-		direction = rotation;
-	}
-	
 	/** 
 	 * Get called when you want to shoot.
 	 */
@@ -88,18 +83,31 @@ public class Player extends GameObject {
 		
 	}
 	
-	public void setDirection(int mouseX, int mouseY)
+	/**
+	 * Sets the direction in which the Player looks.
+	 * @param relX The Mouseposition relative to the Player
+	 * @param relY The Mouseposition relative to the Player
+	 */
+	public void setDirection(int relX, int relY)
 	{
 	
-		this.direction = new Float((Math.atan2(mouseY, mouseX) ));//+ 2 * Math.PI) % (2 * Math.PI));
+		this.direction = new Float((Math.atan2(relY, relX) ));//+ 2 * Math.PI) % (2 * Math.PI));
 		System.out.println(direction * 180 / Math.PI);
 	}
 	
+	/**
+	 * Returns the node of the Player. The target of every Enemy.
+	 * @return Node of the Player
+	 */
 	public Node getPlayerNode()
 	{
 		return node;
 	}
 	
+	/**
+	 * Returns the weapon that the Player holds.
+	 * @return Current Weapon
+	 */
 	public Weapon getWeapon()
 	{
 		return weapon;

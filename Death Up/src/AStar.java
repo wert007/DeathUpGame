@@ -33,7 +33,7 @@ public class AStar {
 	 * @param height Height of the map
 	 * @param player Player node
 	 */
-	public static void Create(int width, int height, Node player)
+	public static void create(int width, int height, Node player)
 	{
 		instance = new AStar(width, height, player);
 	}

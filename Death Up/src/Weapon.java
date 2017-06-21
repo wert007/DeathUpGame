@@ -42,6 +42,10 @@ public class Weapon implements Renderable {
 		
 	}
 	
+	/**
+	 * Updates the Weapon and its bullets
+	 * @param delta Time since last Frame in Milliseconds
+	 */
 	public void update(int delta)
 	{
 		for(int i = 0; i < bullets.size(); i++)
@@ -54,6 +58,10 @@ public class Weapon implements Renderable {
 		}
 	}
 	
+	/**
+	 * Returns all moving bullets in game
+	 * @return All moving bullets
+	 */
 	public Bullet[] getBullets()
 	{
 		return Arrays.copyOf(bullets.toArray(), bullets.size(), Bullet[].class);

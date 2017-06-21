@@ -36,7 +36,7 @@ public class Renderer{
 		}
 		
 		try {
-			ReloadTextures(renderables);
+			reloadTextures(renderables);
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,7 +72,7 @@ public class Renderer{
 	 * Updates the Textures
 	 * @throws SlickException 
 	 */
-	public void ReloadTextures(ArrayList<Renderable> renderables) throws SlickException
+	public void reloadTextures(ArrayList<Renderable> renderables) throws SlickException
 	{
 		textures = new ArrayList<PositionableImage>();
 		for(Renderable r : renderables)

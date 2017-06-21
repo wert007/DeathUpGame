@@ -13,6 +13,11 @@ public abstract class GameObject implements Renderable {
 	private Vector2f velocity;
 	private Vector2f acceleration;
 	
+	/**
+	 * Creates a new GameObject
+	 * @param pos Position in Pixels
+	 * @param size Size in Pixels
+	 */
 	public GameObject(Position pos, Position size)
 	{
 		this.collisionBox = new CollisionBox(pos, size, this);
@@ -32,8 +37,16 @@ public abstract class GameObject implements Renderable {
 		velocity = new Vector2f(velocity.x * (1 - getFriction()), velocity.y * (1 - getFriction()));
 	}
 	
+	/**
+	 * Returns the Friction
+	 * @return Friction of the GameObject
+	 */
 	public abstract float getFriction();
 	
+	/**
+	 * "Push" the GameObject with a certain speed in a direction
+	 * @param acceleration Represents direction and speed
+	 */
 	public void accelerate(Vector2f acceleration)
 	{
 		acceleration = this.acceleration.add(acceleration);
