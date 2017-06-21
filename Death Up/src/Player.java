@@ -11,9 +11,6 @@ public class Player extends GameObject {
 	private Weapon weapon;
 	private float direction;
 	private Node node;
-	/**
-	 * Pixels per second
-	 */
 	private final float SPEED = 250; //Pixels per second
 
 	
@@ -112,14 +109,14 @@ public class Player extends GameObject {
 	{
 		return weapon;
 	}
-	/**
-	 * Runs the update cycle
-	 * @param delta Time since last Update in milliseconds
-	 */
-	public void update(int delta)
-	{
-		super.update(delta);
-	}
+//	/**
+//	 * Runs the update cycle
+//	 * @param delta Time since last Update in milliseconds
+//	 */
+//	public void update(int delta)
+//	{
+//		super.update(delta);
+//	}
 
 	@Override
 	public String getPath() {
