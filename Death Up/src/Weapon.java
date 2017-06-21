@@ -1,12 +1,27 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.newdawn.slick.Image;
 
-
-public class Weapon {
+/**
+ * 
+ * @author jherrmann
+ *
+ */
+public class Weapon implements Renderable {
 	
-	private Image texture;
 	private ArrayList<Bullet> bullets;
+	private Player player;
+	
+	/**
+	 * Creates a new Weapon
+	 * @param player Owner of the Weapon
+	 */
+	public Weapon(Player player)
+	{
+		this.bullets=new ArrayList<Bullet>();
+		this.player=player;
+	}
 	
 	/**
 	 * Shoots the weapon and fires a bullet
@@ -14,7 +29,7 @@ public class Weapon {
 	 * @param direction Direction in 2 * PI
 	 */
 	public void shoot(float direction) {
-		
+		bullets.add(new Bullet(player.getPosition(),direction));
 	}
 	
 	/**
@@ -25,6 +40,48 @@ public class Weapon {
 	public void removeBullet(Bullet bullet)
 	{
 		
+	}
+	
+	public void update(int delta)
+	{
+		for(int i = 0; i < bullets.size(); i++)
+		{
+			boolean shoot = bullets.get(i).updateBullet(delta);
+			if(shoot)
+			{
+				bullets.remove(i);
+			}
+		}
+	}
+	
+	public Bullet[] getBullets()
+	{
+		return Arrays.copyOf(bullets.toArray(), bullets.size(), Bullet[].class);
+		//return (Bullet[])bullets.toArray();
+	}
+
+	@Override
+	public String getPath() {
+		// TODO Auto-generated method stub
+		return "./gfx/weapon.png";
+	}
+
+	@Override
+	public int getZ() {
+		// TODO Auto-generated method stub
+		return 1000;
+	}
+
+	@Override
+	public Position getPosition() {
+		// TODO Auto-generated method stub
+		return player.getPosition();
+	}
+
+	@Override
+	public float getRotation() {
+		// TODO Auto-generated method stub
+		return player.getRotation();
 	}
 
 }
