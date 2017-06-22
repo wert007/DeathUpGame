@@ -58,6 +58,11 @@ public class DeathUpGame extends BasicGame {
 		map = new Map("Arena", 700 * 2, 524 * 2);
 		renderer = new Renderer(map);
 	}
+	
+	public void testMethodeZumComitten(int i)
+	{
+		i = 42;
+	}
 
 	/**
 	 * updates game logic and handles player input
