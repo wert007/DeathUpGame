@@ -33,12 +33,13 @@ public class Enemy extends GameObject{
 	 */
 	public void update(Player player, int delta)
 	{
-		current = AStar.GetInstance().findPath(current, player.getPlayerNode());
-		int xDif = current.getPosition().getX() - getPosition().getX();
-		int yDif = current.getPosition().getY() - getPosition().getY();
-		Vector2f dif =new Vector2f(xDif, yDif).normalise().scale(SPEED * delta / 1000.0f);
-		rotation = (float)Math.atan2(yDif, xDif);
-		accelerate(dif);
+		//TODO implement findPath in Astar
+//		current = AStar.GetInstance().findPath(current, player.getPlayerNode());
+//		int xDif = current.getPosition().getX() - getPosition().getX();
+//		int yDif = current.getPosition().getY() - getPosition().getY();
+//		Vector2f dif =new Vector2f(xDif, yDif).normalise().scale(SPEED * delta / 1000.0f);
+//		rotation = (float)Math.atan2(yDif, xDif);
+//		accelerate(dif);
 	}
 
 	@Override
