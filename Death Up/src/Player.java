@@ -89,8 +89,7 @@ public class Player extends GameObject {
 	public void setDirection(int relX, int relY)
 	{
 	
-		this.direction = new Float((Math.atan2(relY, relX) ));//+ 2 * Math.PI) % (2 * Math.PI));
-		System.out.println(direction * 180 / Math.PI);
+		this.direction = new Float((Math.atan2(relY, relX) ));//+ 2 * Math.PI) % (2 * Math.PI))
 	}
 	
 	/**

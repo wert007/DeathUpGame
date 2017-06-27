@@ -101,7 +101,23 @@ public class DeathUpGame extends BasicGame {
 		map.getPlayer().setDirection(Mouse.getX() - gc.getWidth() / 2, -Mouse.getY() + gc.getHeight() / 2);
 		//System.out.println(map.getPlayer().getRotation()+ "");
 		map.update(gc, delta);
-		
+		if(Mouse.isButtonDown(0)) //LeftButton
+		{
+			map.getPlayer().shoot();
+			renderer.reloadTextures();
+		}
+		if(Mouse.isButtonDown(1))
+		{
+			System.out.println("1");
+		}
+		if(Mouse.isButtonDown(2))
+		{
+			System.out.println("2");
+		}
+		if(Mouse.isButtonDown(3))
+		{
+			System.out.println("3");
+		}
 	}
 	
 	

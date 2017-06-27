@@ -27,15 +27,17 @@ public class Wave {
 	public void update(int delta, Player player)
 	{
 		float spawnThisUpdate = targetCountEnemies / SECONDSTOSPAWN * delta / 1000.0f; // spawns pro frame
+		System.out.println(spawnThisUpdate + "wave");
 		spawnedCountEnemies += spawnThisUpdate;
 		if(spawnedCountEnemies < spawnThisUpdate)
 		{
 			for (int i = 0; i < spawnThisUpdate; i++) {
-			//	enemies.add(new Enemy(AStar.getRandomSpawnNode()));
+				enemies.add(new Enemy(AStar.getRandomSpawnNode()));
 			}
 		}
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).update(player, delta);
+			System.out.println("enemy updatding");
 		}
 	}
 	

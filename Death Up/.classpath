@@ -6,9 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="//server2/klassen/Q11/TAUSCH/Informatik/Cooles Spiel/workspace/lib/lwjgl.jar"/>
-	<classpathentry kind="lib" path="//server2/klassen/Q11/TAUSCH/Informatik/Cooles Spiel/workspace/lib/slick.jar"/>
-	<classpathentry kind="lib" path="/Death Up School/lib/lwjgl.jar"/>
-	<classpathentry kind="lib" path="/Death Up School/lib/slick.jar"/>
+	<classpathentry kind="lib" path="//server2/klassen/Q11/TAUSCH/Informatik/Cooles Spiel/git/DeathUpGame/Death Up/lib/lwjgl.jar"/>
+	<classpathentry kind="lib" path="//server2/klassen/Q11/TAUSCH/Informatik/Cooles Spiel/git/DeathUpGame/Death Up/lib/slick.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -41,7 +41,7 @@ public class Map implements Renderable {
 			this.obstacles.add(new Obstacle(new Position(rand.nextInt(this.width),rand.nextInt(this.height)),new Position(20,20)));
 			}
 		this.poolOfBloods= new ArrayList<PoolOfBlood>();
-		this.wave= new Wave(10);
+		this.wave= new Wave(100000000);
 		}
 	
 	/**

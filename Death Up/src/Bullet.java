@@ -8,7 +8,7 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public class Bullet extends GameObject {
 	private float direction;
-	private final float SPEED = 20;
+	private final float SPEED = 500;
 	
 	/**
 	 * Create a new Bullet
@@ -26,6 +26,7 @@ public class Bullet extends GameObject {
 	 * @return Hit something??
 	 */
 	public boolean updateBullet(int delta){
+		System.out.println("BULLET \\o/");
 		super.update(delta);
 		for(CollisionBox c : collisionBox.collideWith())
 		{

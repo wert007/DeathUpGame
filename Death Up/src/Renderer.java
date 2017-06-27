@@ -67,6 +67,16 @@ public class Renderer{
 		acceleration = this.acceleration.add(new Vector2f(-SPEED * delta / 1000.0f, 0));
 	}
 	
+	public void reloadTextures() throws SlickException
+	{
+		ArrayList<Renderable> renderables = new ArrayList<Renderable>();
+		renderables.add(map);
+		for(Renderable r : map.getChildren())
+		{
+			renderables.add(r);
+		}
+		reloadTextures(renderables);
+	}
 	
 	/**
 	 * Updates the Textures
