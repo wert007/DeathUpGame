@@ -5,7 +5,7 @@
  */
 public class Node implements Comparable{
 	private Position position;
-	private int walkSpeed;
+	private int h;
 	private Node  predecessor;
 	private Node[] successor;
 	private int g;
@@ -18,7 +18,7 @@ public class Node implements Comparable{
 	public Node(Position pos, int walkSpeed)
 	{
 		this.position = pos;
-		this.walkSpeed = walkSpeed;
+		this.h = walkSpeed;
 		//successor hinzufügen
 	}
 	
@@ -27,9 +27,9 @@ public class Node implements Comparable{
 		return position;
 	}
 	
-	public int getWalkSpeed()
+	public int getH()
 	{
-		return walkSpeed;
+		return h;
 	}
 	
 	public void setPredecessor(Node predecessor)
