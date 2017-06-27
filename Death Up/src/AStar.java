@@ -47,6 +47,15 @@ public class AStar {
 		instance = new AStar(width, height, player);
 	}
 	
+	public void update(Player player){
+		for(int i = 0; i < ; i = i+10){
+			for(int j = 0; j < height; j = j+10){
+				Position position = new Position(i,j);
+				nodes[i][j] = new Node(position, 10);
+			}
+		}
+	}
+	
 	/**
 	 * Singleton
 	 * @return Returns Instance
