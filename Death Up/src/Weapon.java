@@ -13,6 +13,7 @@ public class Weapon implements Renderable {
 	private ArrayList<Bullet> bullets;
 	private Player player;
 	
+	
 	/**
 	 * Creates a new Weapon
 	 * @param player Owner of the Weapon
