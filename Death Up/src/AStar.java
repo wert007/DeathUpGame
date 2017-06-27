@@ -31,6 +31,7 @@ public class AStar {
 		}
 	}
 	
+	
 	/**
 	 * Creates the AStar for the game
 	 * @param width Width of the map
