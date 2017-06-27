@@ -73,7 +73,7 @@ public class AStar {
 	public void expandNode(Node currentNode){
 		for(Node successor : currentNode.getSuccessor()){
 			if(!closedlist.contains(successor)){
-				 int tentative_g =  currentNode.getG() + successor.getWalkSpeed();
+				 int tentative_g =  currentNode.getG() + 10;
 				 if(openlist.contains(successor) && tentative_g <= successor.getG()){
 					 successor.setG(tentative_g);
 					 successor.setPredecessor(currentNode);
