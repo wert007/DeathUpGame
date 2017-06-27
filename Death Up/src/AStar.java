@@ -8,6 +8,7 @@ import java.util.Queue;
  * @author qschuster
  *
  */
+
 public class AStar {
 	private Node[][] nodes;
 	static AStar instance;
