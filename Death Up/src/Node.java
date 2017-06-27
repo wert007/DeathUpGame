@@ -3,6 +3,7 @@
  * @author qschuster
  *
  */
+
 public class Node implements Comparable{
 	private Position position;
 	private int h;
