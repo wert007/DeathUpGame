@@ -3,7 +3,11 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-
+/**
+ * 
+ * @author qschuster
+ *
+ */
 public class AStar {
 	private Node[][] nodes;
 	static AStar instance;
