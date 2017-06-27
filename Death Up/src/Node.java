@@ -6,10 +6,12 @@
 
 public class Node implements Comparable{
 	private Position position;
-	private int h;
 	private Node  predecessor;
 	private Node[] successor;
+	private int walkspeed;
 	private int g;
+	private int h;
+	private int f = g + h;
 	
 	/**
 	 * Creates a new Node
@@ -31,6 +33,15 @@ public class Node implements Comparable{
 	public int getH()
 	{
 		return h;
+	}
+	
+	public void setH(int h)
+	{
+		this.h = h;
+	}
+	
+	public void update(Player player){
+		this.h = this.position.distance(player.getPosition());
 	}
 	
 	public void setPredecessor(Node predecessor)
@@ -60,10 +71,10 @@ public class Node implements Comparable{
 
 	@Override
 	public int compareTo(Object o) {
-		if(this.walkSpeed > ((Node)o).getWalkSpeed()){
+		if(this.h > ((Node)o).getH()){
 			return 1;
 		}
-		else if(this.walkSpeed <((Node)o).getWalkSpeed()){
+		else if(this.h <((Node)o).getH()){
 			return -1;
 		}
 		else{

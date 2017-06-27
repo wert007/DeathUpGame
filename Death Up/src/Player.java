@@ -64,6 +64,7 @@ public class Player extends GameObject {
 		accelerate(new Vector2f(0, SPEED * delta / 1000.0f));
 	}
 	
+	
 	/** 
 	 * Get called when you want to shoot.
 	 */

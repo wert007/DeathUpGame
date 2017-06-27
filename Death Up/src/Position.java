@@ -33,5 +33,9 @@ public class Position {
 	public void setY(int y){
 		this.y = y;
 	}
+	
+	public int distance(Position position){
+		return (int)Math.sqrt(Math.pow(this.x - position.getX(), 2) + Math.pow(this.y - position.getY(), 2));
+	}
 }
 
