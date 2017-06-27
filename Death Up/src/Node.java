@@ -41,7 +41,7 @@ public class Node implements Comparable{
 	}
 	
 	public void update(Player player){
-		this.h = this.position.distance(player.getPosition());
+		this.h = this.position.distance(player.getPosition())/10;
 	}
 	
 	public void setPredecessor(Node predecessor)
@@ -67,6 +67,15 @@ public class Node implements Comparable{
 	public void setG(int g)
 	{	
 		this.g = g;
+	}
+	
+	public Node getNode(){
+		if(this.predecessor.getG() != 0){
+			return this.predecessor.getNode();
+		}
+		else{
+			return this;
+		}
 	}
 
 	@Override

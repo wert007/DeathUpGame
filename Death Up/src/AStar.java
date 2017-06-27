@@ -26,8 +26,12 @@ public class AStar {
 	 */
 	private AStar(int width, int height, Node player)
 	{
+		nodes = new Node[(int)width/10][(int)height/10];
 		for(int i = 0; i < width; i = i+10){
-			//nodes hinzufügen
+			for(int j = 0; j < height; j = j+10){
+				Position position = new Position(i,j);
+				nodes[i][j] = new Node(position, 10);
+			}
 		}
 	}
 	
@@ -58,23 +62,23 @@ public class AStar {
 	 * @param end Where I want to be
 	 * @return Node to go!
 	 */
-	public int findPath(Node start, Node end){	
+	public Node findPath(Node start, Node end){	
 		openlist.add(start);
 		while(!openlist.isEmpty()){
 			currentNode = openlist.poll();
 			if(currentNode == end){
-				return 1;
+				return currentNode.getNode();
 			}
 			closedlist.add(currentNode);
 			expandNode(currentNode);
 		}
-		return 0;
+		return null;
 	}
 	
 	public void expandNode(Node currentNode){
 		for(Node successor : currentNode.getSuccessor()){
 			if(!closedlist.contains(successor)){
-				 int tentative_g =  currentNode.getG() + 10;
+				 int tentative_g =  currentNode.getG() + 1;
 				 if(openlist.contains(successor) && tentative_g <= successor.getG()){
 					 successor.setG(tentative_g);
 					 successor.setPredecessor(currentNode);
