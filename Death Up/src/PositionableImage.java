@@ -26,6 +26,7 @@ public class PositionableImage extends Image implements Comparable {
 	public void draw(Position offset)
 	{
 		setRotation((float) (parent.getRotation() * 180 / Math.PI));
+		setCenterOfRotation(parent.getCenterOfRotationX() * width, parent.getCenterOfRotationY() * height);
 		draw(parent.getPosition().getX() + offset.getX(), parent.getPosition().getY() + offset.getY());
 	}
 

@@ -60,5 +60,17 @@ public abstract class GameObject implements Renderable {
 	{
 		return collisionBox.getPosition();
 	}
+	
+	@Override
+	public float getCenterOfRotationX() {
+		// TODO Auto-generated method stub
+		return 0.5f;
+	}
+	
+	@Override
+	public float getCenterOfRotationY() {
+		// TODO Auto-generated method stub
+		return 0.5f;
+	}
 }
 

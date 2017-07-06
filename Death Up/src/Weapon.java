@@ -49,11 +49,13 @@ public class Weapon implements Renderable {
 	 */
 	public void update(int delta)
 	{
+		
 		for(int i = 0; i < bullets.size(); i++)
 		{
 			boolean shoot = bullets.get(i).updateBullet(delta);
 			if(shoot)
 			{
+				System.out.println("Bye o7");
 				bullets.remove(i);
 			}
 		}
@@ -91,6 +93,18 @@ public class Weapon implements Renderable {
 	public float getRotation() {
 		// TODO Auto-generated method stub
 		return player.getRotation();
+	}
+
+	@Override
+	public float getCenterOfRotationX() {
+		// TODO Auto-generated method stub
+		return 0.25f;
+	}
+
+	@Override
+	public float getCenterOfRotationY() {
+		// TODO Auto-generated method stub
+		return 0.5f;
 	}
 
 }

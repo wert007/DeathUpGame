@@ -75,6 +75,7 @@ public class Map implements Renderable {
 	 */
 	public void update(GameContainer container, int delta){
 		player.update(delta);
+		player.getWeapon().update(delta);
 		wave.update(delta, this.player);
 		
 	}
@@ -118,6 +119,18 @@ public class Map implements Renderable {
 	public float getRotation() {
 		// TODO Auto-generated method stub
 		return 0f;
+	}
+
+	@Override
+	public float getCenterOfRotationX() {
+		// TODO Auto-generated method stub
+		return 0.5f;
+	}
+
+	@Override
+	public float getCenterOfRotationY() {
+		// TODO Auto-generated method stub
+		return 0.5f;
 	}
 
 	

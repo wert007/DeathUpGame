@@ -19,9 +19,22 @@ public interface Renderable {
 	 * @return Position in pixels
 	 */
 	public Position getPosition();
+
+	/**
+	 * Gives you the x-position in percent of the center of rotation.
+	 * @return the x-position in percent of the center of rotation
+	 */
+	public float getCenterOfRotationX();
+	/**
+	 * Gives you the y-position in percent of the center of rotation.
+	 * @return the y-position in percent of the center of rotation
+	 */
+	public float getCenterOfRotationY();
 	/**
 	 * Gives you the rotation of the texture in radian measure
 	 * @return Rotation in radian measure
 	 */
 	public float getRotation();
+	
+	
 }

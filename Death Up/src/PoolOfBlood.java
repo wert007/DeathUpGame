@@ -38,4 +38,16 @@ public class PoolOfBlood implements Renderable {
 		// TODO Auto-generated method stub
 		return 0f;
 	}
+
+	@Override
+	public float getCenterOfRotationX() {
+		// TODO Auto-generated method stub
+		return 0.5f;
+	}
+
+	@Override
+	public float getCenterOfRotationY() {
+		// TODO Auto-generated method stub
+		return 0.5f;
+	}
 }
