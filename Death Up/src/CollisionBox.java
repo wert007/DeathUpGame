@@ -1,5 +1,6 @@
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * 
@@ -115,7 +116,7 @@ public class CollisionBox {
 				collide.add(allCollisionBoxes.get(i));
 			}
 		}
-		return (CollisionBox[])collide.toArray();
+		return Arrays.copyOf(collide.toArray(), collide.size(), CollisionBox[].class);
 	}
 	
 	public Rectangle getRectangle(){

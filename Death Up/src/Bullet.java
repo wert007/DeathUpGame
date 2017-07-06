@@ -8,7 +8,7 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public class Bullet extends GameObject {
 	private float direction;
-	private final float SPEED = 500;
+	private final float SPEED = 10;
 	
 	/**
 	 * Create a new Bullet
@@ -16,7 +16,7 @@ public class Bullet extends GameObject {
 	 */
 	public Bullet(Position pos, float direction)
 	{
-		super(pos, new Position(10, 10));
+		super(new Position(pos.getX(), pos.getY()), new Position(10, 10));
 		this.direction = direction;
 		accelerate(new Vector2f((float)Math.cos(direction), (float)Math.sin(direction)).scale(SPEED));
 	}
@@ -26,7 +26,6 @@ public class Bullet extends GameObject {
 	 * @return Hit something??
 	 */
 	public boolean updateBullet(int delta){
-		System.out.println("BULLET \\o/");
 		super.update(delta);
 		for(CollisionBox c : collisionBox.collideWith())
 		{
@@ -35,7 +34,7 @@ public class Bullet extends GameObject {
 			if(c.getParent() instanceof Obstacle)
 				return true;
 			if(c.getParent() instanceof Bullet) //Would be so awesome!
-				return true;
+				return false;
 		}
 		return false;
 	}
