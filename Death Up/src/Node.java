@@ -11,7 +11,6 @@ public class Node implements Comparable{
 	private int walkspeed;
 	private int g;
 	private int h;
-	private int f = g + h;
 	
 	/**
 	 * Creates a new Node

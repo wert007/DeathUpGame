@@ -115,8 +115,9 @@ public class AStar {
 					 successor.setG(tentative_g);
 					 successor.setPredecessor(currentNode);
 				 }
-			}
 				 openlist.add(successor);
+			}
+				 
 			}
 		}
 	}
