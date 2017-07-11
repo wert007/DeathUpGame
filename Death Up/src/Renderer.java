@@ -115,7 +115,7 @@ public class Renderer{
 		
 	}
 	public void update(int delta){
-		if(this.getPos().getX() < -640)
-		this.getPos().setX(-640);
+		if(this.getPos().getX() < -639)
+		this.getPos().setX(-639);
 	}
 }
