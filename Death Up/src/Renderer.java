@@ -87,7 +87,7 @@ public class Renderer{
 		textures = new ArrayList<PositionableImage>();
 		for(Renderable r : renderables)
 		{
-			textures.add(new PositionableImage(new Image(r.getPath()), r));
+			textures.add(new PositionableImage(new Image("./src/" + r.getPath()), r));
 		}
 		sortTextures();
 	}
