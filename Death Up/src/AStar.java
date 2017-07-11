@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Random;
 
 /**
  * 
@@ -17,6 +18,7 @@ public class AStar {
 	private Node currentNode;
 	private PriorityQueue<Node> openlist = new PriorityQueue<Node>();
 	private List<Node> closedlist = new ArrayList<Node>();
+	private Random rdm;
 	
 	/**
 	 * Constructs AStar
@@ -45,15 +47,18 @@ public class AStar {
 	public static void create(int width, int height, Node player)
 	{
 		instance = new AStar(width, height, player);
+		
 	}
 	
 	public void update(Player player){
-		for(int i = 0; i < ; i = i+10){
-			for(int j = 0; j < height; j = j+10){
-				Position position = new Position(i,j);
-				nodes[i][j] = new Node(position, 10);
-			}
+		for(int i = 0; i < nodes.length; i++){
+			for(int j = 0; j < nodes[1].length; i++){
+				int a = Math.abs(player.getPosition().getX() - nodes[i][j].getPosition().getX());
+				int b = Math.abs(player.getPosition().getY() - nodes[i][j].getPosition().getY());
+				double c = Math.pow(a,2) + Math.pow(b, 2);
+				int h = (int)Math.sqrt(c);
 		}
+	}
 	}
 	
 	/**
@@ -64,6 +69,7 @@ public class AStar {
 	{
 		return instance;
 	}
+	
 	/**
 	 * Gives the next Node on the path to end.
 	 * 
@@ -71,31 +77,47 @@ public class AStar {
 	 * @param end Where I want to be
 	 * @return Node to go!
 	 */
-	public Node findPath(Node start, Node end){	
+	
+	public Node getRdmSpawn()
+	{
+		int a = rdm.nextInt(nodes.length);
+		int b = rdm.nextInt(nodes[0].length);
+		return nodes[a][b];
+	}
+	
+	
+	public Node findPath(Node start, Node end){
 		openlist.add(start);
 		while(!openlist.isEmpty()){
 			currentNode = openlist.poll();
 			if(currentNode == end){
-				return currentNode.getNode();
+				return currentNode.getNextNode(start);
 			}
 			closedlist.add(currentNode);
-			expandNode(currentNode);
+			expandNode(currentNode, start);
 		}
 		return null;
 	}
 	
-	public void expandNode(Node currentNode){
+	public void expandNode(Node currentNode, Node enemy){
 		for(Node successor : currentNode.getSuccessor()){
+			
 			if(!closedlist.contains(successor)){
-				 int tentative_g =  currentNode.getG() + 1;
+				
+				int a = Math.abs(enemy.getPosition().getX() - successor.getPosition().getX());
+				int b = Math.abs(enemy.getPosition().getY() - successor.getPosition().getY());
+				double c = Math.pow(a,2) + Math.pow(b, 2);
+				int g = (int)Math.sqrt(c);
+				
+				 int tentative_g =  g + 10;
+				 
 				 if(openlist.contains(successor) && tentative_g <= successor.getG()){
 					 successor.setG(tentative_g);
 					 successor.setPredecessor(currentNode);
 				 }
+			}
 				 openlist.add(successor);
 			}
 		}
 	}
 	
-	
-}

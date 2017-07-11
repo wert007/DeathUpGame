@@ -77,6 +77,15 @@ public class Node implements Comparable{
 			return this;
 		}
 	}
+	
+	public Node getNextNode(Node start){
+		if(this.predecessor == start){
+			return this;
+		}
+		else{
+			return this.predecessor.getNextNode(start);
+		}
+	}
 
 	@Override
 	public int compareTo(Object o) {
