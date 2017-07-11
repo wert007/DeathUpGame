@@ -17,7 +17,6 @@ public class Renderer{
 	private Position pos;
 	private Vector2f velocity;
 	private Vector2f acceleration;
-	private final int SPEED = 250;
 	
 	
 	/**
@@ -51,20 +50,20 @@ public class Renderer{
 	}
 	
 	public void Up(int delta){
-		acceleration = this.acceleration.add(new Vector2f(0, SPEED * delta / 1000.0f));
+		acceleration = this.acceleration.add(new Vector2f(0, map.getPlayer().SPEED * delta / 1000.0f));
 		
 	}
 	
 	public void Down(int delta){
-		acceleration = this.acceleration.add(new Vector2f(0, -SPEED * delta / 1000.0f));
+		acceleration = this.acceleration.add(new Vector2f(0, -map.getPlayer().SPEED * delta / 1000.0f));
 	}
 
 	public void Left(int delta){
-		acceleration = this.acceleration.add(new Vector2f(SPEED * delta / 1000.0f, 0));
+		acceleration = this.acceleration.add(new Vector2f(map.getPlayer().SPEED * delta / 1000.0f, 0));
 	}
 	
 	public void Right(int delta){
-		acceleration = this.acceleration.add(new Vector2f(-SPEED * delta / 1000.0f, 0));
+		acceleration = this.acceleration.add(new Vector2f(-map.getPlayer().SPEED * delta / 1000.0f, 0));
 	}
 	
 	public void reloadTextures() throws SlickException
@@ -114,5 +113,9 @@ public class Renderer{
 			textures.get(i).draw(pos);			
 		}
 		
+	}
+	public void update(int delta){
+		if(this.getPos().getX() < -640)
+		this.getPos().setX(-640);
 	}
 }

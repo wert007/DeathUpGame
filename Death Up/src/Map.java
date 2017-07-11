@@ -42,6 +42,7 @@ public class Map implements Renderable {
 			}
 		this.poolOfBloods= new ArrayList<PoolOfBlood>();
 		this.wave= new Wave(100000000);
+		AStar.create(width, height, player.getPlayerNode());
 		}
 	
 	/**

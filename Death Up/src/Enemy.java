@@ -17,6 +17,7 @@ public class Enemy extends GameObject{
 	public Enemy(Node position) {
 		super(position.getPosition(), new Position(32, 32));
 		// TODO Auto-generated constructor stub
+		current = position;
 	}
 
 	/**

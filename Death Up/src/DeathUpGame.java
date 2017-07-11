@@ -77,15 +77,16 @@ public class DeathUpGame extends BasicGame {
 		{
 			
 			renderer.Up(delta);
-			
 			map.getPlayer().walkNorth(delta);
+			
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) //example
-		{
-			if(renderer.getPos().getX() < map.getPosition().getX()){
-				renderer.Left(delta);
-				}
+		{	
+			if(map.getPlayer().getPosition().getX() > 0){	
+			renderer.Left(delta);
 			map.getPlayer().walkWest(delta);
+			}
+			
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S)) //example
 		{
@@ -94,6 +95,7 @@ public class DeathUpGame extends BasicGame {
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)) //example
 		{
+			
 			renderer.Right(delta);
 			map.getPlayer().walkEast(delta);
 		}
@@ -101,6 +103,7 @@ public class DeathUpGame extends BasicGame {
 		map.getPlayer().setDirection(Mouse.getX() - gc.getWidth() / 2, -Mouse.getY() + gc.getHeight() / 2);
 		//System.out.println(map.getPlayer().getRotation()+ "");
 		map.update(gc, delta);
+		renderer.update(delta);
 		if(Mouse.isButtonDown(0)) //LeftButton
 		{
 			map.getPlayer().shoot();

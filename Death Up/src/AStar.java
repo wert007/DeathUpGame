@@ -28,11 +28,14 @@ public class AStar {
 	 */
 	private AStar(int width, int height, Node player)
 	{
-		nodes = new Node[(int)width/10][(int)height/10];
+		currentNode = null;
+		rdm = new Random();
+		nodes = new Node[(int)width/10 + 1][(int)height/10 + 1];
 		for(int i = 0; i < width; i = i+10){
 			for(int j = 0; j < height; j = j+10){
 				Position position = new Position(i,j);
-				nodes[i][j] = new Node(position, 10);
+				nodes[i/10][j/10] = new Node(position, 10);
+				System.out.println(nodes[i/10][j/10].getPosition());
 			}
 		}
 	}
@@ -82,7 +85,7 @@ public class AStar {
 	{
 		int a = rdm.nextInt(nodes.length);
 		int b = rdm.nextInt(nodes[0].length);
-		return nodes[a][b];
+		return nodes[0][0];
 	}
 	
 	
@@ -100,6 +103,7 @@ public class AStar {
 	}
 	
 	public void expandNode(Node currentNode, Node enemy){
+		System.out.println(currentNode);
 		for(Node successor : currentNode.getSuccessor()){
 			
 			if(!closedlist.contains(successor)){

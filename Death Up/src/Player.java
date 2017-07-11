@@ -11,7 +11,7 @@ public class Player extends GameObject {
 	private Weapon weapon;
 	private float direction;
 	private Node node;
-	private final float SPEED = 250; //Pixels per second
+	public final float SPEED = 100; //Pixels per second
 
 	
 	/**
@@ -99,6 +99,14 @@ public class Player extends GameObject {
 	public Node getPlayerNode()
 	{
 		return node;
+	}
+	
+	@Override
+	public void update(int delta){
+		super.update(delta);
+		if(this.getPosition().getX() < 0){
+			this.getPosition().setX(0);
+		}
 	}
 	
 	/**

@@ -8,7 +8,7 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public class Bullet extends GameObject {
 	private float direction;
-	private final float SPEED = 10;
+	private final float SPEED = 25;
 	
 	/**
 	 * Create a new Bullet
