@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Wave {
 
 	private int targetCountEnemies;
-	private int spawnedCountEnemies;
+	private float spawnedCountEnemies;
 	private ArrayList<Enemy> enemies;
 	private final int SECONDSTOSPAWN = 5;
 	
@@ -26,17 +26,13 @@ public class Wave {
 	 */
 	public void update(int delta, Player player)
 	{
-		float spawnThisUpdate = targetCountEnemies / SECONDSTOSPAWN * delta / 1000.0f; // spawns pro frame
-		spawnedCountEnemies += spawnThisUpdate;
-		if(spawnedCountEnemies < spawnThisUpdate)
-		{
-			for (int i = 0; i < spawnThisUpdate; i++) {
-				enemies.add(new Enemy(AStar.GetInstance().getRdmSpawn()));
-			}
+		float spawnThisUpdate = (targetCountEnemies - spawnedCountEnemies) / SECONDSTOSPAWN * delta / 1000.0f; // spawns pro frame
+		spawnedCountEnemies+= spawnThisUpdate;
+		for (int i = 0; i < spawnedCountEnemies - enemies.size(); i++) {
+			enemies.add(new Enemy(AStar.GetInstance().getRdmSpawn()));
 		}
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).update(player, delta);
-			System.out.println("enemy updatding");
 		}
 	}
 	

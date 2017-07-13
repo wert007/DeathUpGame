@@ -8,7 +8,7 @@ import org.newdawn.slick.geom.Vector2f;
 public class Enemy extends GameObject{
 	private Node current;
 	private final float SPEED = 5; //Pixels per Second
-	private Float rotation;
+	private float rotation;
 	
 	/**
 	 * Creates an Enemy at a specific Position (Node).
@@ -18,6 +18,7 @@ public class Enemy extends GameObject{
 		super(position.getPosition(), new Position(32, 32));
 		// TODO Auto-generated constructor stub
 		current = position;
+		rotation = 0;
 	}
 
 	/**
@@ -45,7 +46,7 @@ public class Enemy extends GameObject{
 
 	@Override
 	public String getPath() {
-		return "./gfx/basicenemy.png";
+		return "./gfx/enemy.png";
 	}
 
 	@Override
