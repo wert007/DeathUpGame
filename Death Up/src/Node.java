@@ -47,6 +47,11 @@ public class Node implements Comparable{
 	{
 		this.predecessor = predecessor;
 	}
+	
+	public void setSuccessor(Node[] successor)
+	{
+		this.successor = successor;
+	}
 
 	public Node getPredecessor()
 	{

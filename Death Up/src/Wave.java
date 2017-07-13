@@ -32,7 +32,7 @@ public class Wave {
 			enemies.add(new Enemy(AStar.GetInstance().getRdmSpawn()));
 		}
 		for (int i = 0; i < enemies.size(); i++) {
-			enemies.get(i).update(player, delta);
+			//enemies.get(i).update(player, delta);
 		}
 	}
 	

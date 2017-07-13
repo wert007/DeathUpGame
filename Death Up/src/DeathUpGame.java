@@ -75,29 +75,32 @@ public class DeathUpGame extends BasicGame {
 		// TODO Auto-generated method stub
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)) //example
 		{
-			
-			renderer.Up(delta);
+			//renderer.Up(delta);
+			if(map.getPlayer().getPosition().getY() > 0){
 			map.getPlayer().walkNorth(delta);
-			
+			}
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) //example
 		{	
+			//renderer.Left(delta);
 			if(map.getPlayer().getPosition().getX() > 0){	
-			renderer.Left(delta);
 			map.getPlayer().walkWest(delta);
 			}
 			
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S)) //example
 		{
-			renderer.Down(delta);
+			//renderer.Down(delta);
+			if(map.getPlayer().getPosition().getY() < 2160){
 			map.getPlayer().walkSouth(delta);
+			}
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)) //example
 		{
-			
-			renderer.Right(delta);
+			//renderer.Right(delta);
+			if(map.getPlayer().getPosition().getX() > 3840){
 			map.getPlayer().walkEast(delta);
+			}
 		}
 		float debugrot = (float)Math.atan2(Mouse.getY() - 524, Mouse.getX() - 700);
 		map.getPlayer().setDirection(Mouse.getX() - gc.getWidth() / 2, -Mouse.getY() + gc.getHeight() / 2);

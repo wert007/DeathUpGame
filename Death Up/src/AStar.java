@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -35,10 +36,42 @@ public class AStar {
 			for(int j = 0; j < height; j = j+10){
 				Position position = new Position(i,j);
 				nodes[i/10][j/10] = new Node(position, 10);
-				System.out.println(nodes[i/10][j/10].getPosition());
+			}
+		}
+		for (int x = 0; x < nodes.length; x++) {
+			for (int y = 0; y < nodes[x].length; y++) {
+				if(nodes[x][y] != null) //TODO ERROR
+				nodes[x][y].setSuccessor(successors(x,y));
 			}
 		}
 	}
+		
+	public Node[] successors(int x, int y)
+	{
+		int size = 0;
+		
+		for (int i = -1; i < 1; i++) {
+			for (int j = -1; j < 1; j++) {
+				
+				if(x+i> -1 && y+j > -1){
+					size++;
+				}
+			}	
+		}
+		
+		Node[] result = new Node[size];
+		for (int i = -1; i < 1; i++) {
+			for (int j = -1; j < 1; j++) {
+				
+				if(x+i> -1 && y+j > -1){
+					size--;
+					result[size] = nodes[x+i][y+j];
+				}
+			}	
+		}
+	return result;	
+	}		
+		
 	
 	
 	/**
@@ -103,16 +136,14 @@ public class AStar {
 	}
 	
 	public void expandNode(Node currentNode, Node enemy){
-		System.out.println(currentNode);
 		for(Node successor : currentNode.getSuccessor()){
 			
 			if(!closedlist.contains(successor)){
-				
-				int a = Math.abs(enemy.getPosition().getX() - successor.getPosition().getX());
-				int b = Math.abs(enemy.getPosition().getY() - successor.getPosition().getY());
-				double c = Math.pow(a,2) + Math.pow(b, 2);
-				int g = (int)Math.sqrt(c);
-				
+				//TODO ERROR
+				int a = Math.abs(currentNode.getPosition().getX() - successor.getPosition().getX());
+				int b = Math.abs(currentNode.getPosition().getY() - successor.getPosition().getY());
+				int g = (int)Math.sqrt(Math.pow(a,2) + Math.pow(b, 2));
+				//TODO ERROR
 				 int tentative_g =  g + 10;
 				 
 				 if(openlist.contains(successor) && tentative_g <= successor.getG()){

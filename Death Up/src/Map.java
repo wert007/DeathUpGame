@@ -33,7 +33,7 @@ public class Map implements Renderable {
 		this.name = name;
 		this.width = width;
 		this.height = height;
-		this.pos= new Position((int) (640-0.5*this.width),(int) (360-0.5*this.height));
+		this.pos= new Position(0,0);
 		this.score = 0;
 		this.player = new Player(new Position((int) (0.5 * 1280),(int) (0.5 * 720)), 100);
 		this.obstacles= new ArrayList<Obstacle>();
@@ -41,7 +41,7 @@ public class Map implements Renderable {
 			this.obstacles.add(new Obstacle(new Position(rand.nextInt(this.width),rand.nextInt(this.height)),new Position(20,20)));
 			}
 		this.poolOfBloods= new ArrayList<PoolOfBlood>();
-		this.wave= new Wave(100000000);
+		this.wave= new Wave(200);
 		AStar.create(width, height, player.getPlayerNode());
 		}
 	
