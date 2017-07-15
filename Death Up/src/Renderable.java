@@ -36,5 +36,11 @@ public interface Renderable {
 	 */
 	public float getRotation();
 	
+	/**
+	 * Returns true if it doesn't move with the camera.
+	 * @return
+	 */
+	public boolean isCameraRelated();
+	
 	
 }

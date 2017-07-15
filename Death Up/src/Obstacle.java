@@ -29,4 +29,10 @@ public class Obstacle extends GameObject {
 		// TODO Auto-generated method stub
 		return 0f;
 	}
+
+	@Override
+	public boolean isCameraRelated() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

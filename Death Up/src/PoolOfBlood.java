@@ -50,4 +50,10 @@ public class PoolOfBlood implements Renderable {
 		// TODO Auto-generated method stub
 		return 0.5f;
 	}
+
+	@Override
+	public boolean isCameraRelated() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

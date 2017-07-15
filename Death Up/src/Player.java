@@ -145,4 +145,9 @@ public class Player extends GameObject {
 		// TODO Auto-generated method stub
 		return direction;
 	}
+	@Override
+	public boolean isCameraRelated() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

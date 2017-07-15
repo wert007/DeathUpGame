@@ -134,5 +134,11 @@ public class Map implements Renderable {
 		return 0.5f;
 	}
 
+	@Override
+	public boolean isCameraRelated() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

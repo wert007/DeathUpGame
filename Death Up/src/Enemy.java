@@ -65,5 +65,11 @@ public class Enemy extends GameObject{
 		// TODO Auto-generated method stub
 		return rotation;
 	}
+
+	@Override
+	public boolean isCameraRelated() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

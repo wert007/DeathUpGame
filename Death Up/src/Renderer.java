@@ -112,7 +112,7 @@ public class Renderer{
 		velocity = new Vector2f(velocity.x * (1 - map.getPlayer().getFriction()), velocity.y * (1 - map.getPlayer().getFriction()));
 		for(int i = 0; i < textures.size(); i++)
 		{
-			if(textures.get(i).parent.getPath() == "./gfx/player.png")
+			if(textures.get(i).parent.isCameraRelated())
 			{
 				textures.get(i).draw(new Position(0,0));
 			}
@@ -123,7 +123,7 @@ public class Renderer{
 		
 	}
 	public void update(int delta){
-		this.getPos().setX(this.player.getPosition().getX() + 640);
-		this.getPos().setY(this.player.getPosition().getY() + 360);
+		this.getPos().setX(this.player.getPosition().getX() - 640);
+		this.getPos().setY(this.player.getPosition().getY() - 360);
 	}
 }

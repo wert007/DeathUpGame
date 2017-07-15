@@ -107,4 +107,9 @@ public class Weapon implements Renderable {
 		return 0.5f;
 	}
 
+	@Override
+	public boolean isCameraRelated() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

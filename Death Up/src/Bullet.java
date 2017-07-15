@@ -56,5 +56,10 @@ public class Bullet extends GameObject {
 	public float getRotation() {
 		return direction;
 	}
-	
+
+	@Override
+	public boolean isCameraRelated() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 }
