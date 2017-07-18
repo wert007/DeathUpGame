@@ -104,9 +104,14 @@ public class Player extends GameObject {
 	@Override
 	public void update(int delta){
 		super.update(delta);
-		if(this.getPosition().getX() < 0){
-			this.getPosition().setX(0);
-		}
+		if(getPosition().getX() < 1280 * 0.0f)
+			getPosition().setX((int)(1280 * 0.0f));
+		if(getPosition().getY() < 720 * 0.0f)
+			getPosition().setY((int)(720 * 0.0f));
+		if(getPosition().getX() > 1280 * 3f - 32)
+			getPosition().setX((int)(1280 * 3f - 32));
+		if(getPosition().getY() > 720 * 3f - 32)
+			getPosition().setY((int)(720 * 3f - 32));
 	}
 	
 	/**

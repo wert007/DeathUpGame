@@ -52,6 +52,11 @@ public abstract class GameObject implements Renderable {
 		acceleration = this.acceleration.add(acceleration);
 	}
 	
+	public CollisionBox getCollisionBox()
+	{
+		return collisionBox;
+	}
+	
 	/**
 	 * returns the Position of the GameObject
 	 */

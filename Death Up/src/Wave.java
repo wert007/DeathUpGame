@@ -31,8 +31,16 @@ public class Wave {
 		for (int i = 0; i < spawnedCountEnemies - enemies.size(); i++) {
 			enemies.add(new Enemy(AStar.GetInstance().getRdmSpawn()));
 		}
-		for (int i = 0; i < enemies.size(); i++) {
-			//enemies.get(i).update(player, delta);
+		for (int i = enemies.size() - 1; i >= 0; i--) {
+			enemies.get(i).update(player, delta);
+			CollisionBox[] col = enemies.get(i).getCollisionBox().collideWith();
+			
+			for(int j =0; j<col.length; j++){
+				if(col[j].getParent() instanceof Bullet){
+					enemies.remove(i);
+					
+				}
+			}
 		}
 	}
 	

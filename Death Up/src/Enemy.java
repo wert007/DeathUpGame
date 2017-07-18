@@ -7,7 +7,7 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public class Enemy extends GameObject{
 	private Node current;
-	private final float SPEED = 5; //Pixels per Second
+	private final float SPEED = 0.6f; //Pixels per Second
 	private float rotation;
 	
 	/**
@@ -35,11 +35,13 @@ public class Enemy extends GameObject{
 	 */
 	public void update(Player player, int delta)
 	{
+		super.update(delta);
 		//TODO implement findPath in Astar
-		current = AStar.GetInstance().findPath(current, player.getPlayerNode());
-		int xDif = current.getPosition().getX() - getPosition().getX();
-		int yDif = current.getPosition().getY() - getPosition().getY();
-		Vector2f dif =new Vector2f(xDif, yDif).normalise().scale(SPEED * delta / 1000.0f);
+		
+		//current = AStar.GetInstance().findPath(current, player.getPlayerNode());
+		int xDif = player.getPosition().getX() - getPosition().getX();
+		int yDif = player.getPosition().getY() - getPosition().getY();
+		Vector2f dif =new Vector2f(xDif, yDif).normalise().scale(SPEED);
 		rotation = (float)Math.atan2(yDif, xDif);
 		accelerate(dif);
 	}
@@ -57,7 +59,7 @@ public class Enemy extends GameObject{
 	@Override
 	public float getFriction() {
 		// TODO Auto-generated method stub
-		return 0.5f;
+		return 1f;
 	}
 
 	@Override
