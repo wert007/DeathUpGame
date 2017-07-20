@@ -57,6 +57,11 @@ public class Map implements Renderable {
 		return this.height;
 	}
 	
+	public String getName()
+	{
+		return name;
+	}
+	
 	public void spawnEnemy(Position position){
 		
 	}

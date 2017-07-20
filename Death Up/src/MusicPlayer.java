@@ -22,9 +22,10 @@ public class MusicPlayer implements MusicListener {
 		currentTrack = -1;
 		
 		tracks = new ArrayList<Music>();
-		File folder = new  File("/sfx");
+		File folder = new  File("./src/sfx/" + map.getName());
 		File[] listOfFiles = folder.listFiles();
 		for(File file : listOfFiles){
+			System.out.println(file);
 			if(file.isFile())
 			{
 				Music track = null;
@@ -57,6 +58,14 @@ public class MusicPlayer implements MusicListener {
 	public void stop()
 	{
 		
+	}
+	
+	public void setVolume(float volume)
+	{
+		for(Music t : tracks)
+		{
+			t.setVolume(volume);
+		}
 	}
 	
 	/**

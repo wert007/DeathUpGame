@@ -19,6 +19,7 @@ public class DeathUpGame extends BasicGame {
 	
 	private Map map;
 	private Renderer renderer;
+	private MusicPlayer musicPlayer;
 	private int state = 1;
 	
 	
@@ -57,6 +58,9 @@ public class DeathUpGame extends BasicGame {
 	public void init(GameContainer gc) throws SlickException {
 		map = new Map("Arena", 700 * 2, 524 * 2, this);
 		renderer = new Renderer(map);
+		musicPlayer = new MusicPlayer(map);
+		musicPlayer.setVolume(1f);
+		musicPlayer.play();
 	}
 
 	/**
