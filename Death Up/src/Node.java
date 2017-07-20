@@ -21,7 +21,7 @@ public class Node implements Comparable{
 	{
 		this.position = pos;
 		this.h = walkSpeed;
-		//successor hinzufügen
+		//successor hinzufï¿½gen
 	}
 	
 	public Position getPosition()
@@ -40,7 +40,7 @@ public class Node implements Comparable{
 	}
 	
 	public void update(Player player){
-		this.h = this.position.distance(player.getPosition())/10;
+		this.h = (int) (this.position.distance(player.getPosition())/10);
 	}
 	
 	public void setPredecessor(Node predecessor)

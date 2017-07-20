@@ -28,20 +28,20 @@ public class Map implements Renderable {
 	 * @param width Width of the Map
 	 * @param height Height of the Map
 	 */
-	public Map(String name, int width, int height)
+	public Map(String name, int width, int height, DeathUpGame parent)
 	{
 		this.name = name;
 		this.width = width;
 		this.height = height;
 		this.pos= new Position(0,0);
 		this.score = 0;
-		this.player = new Player(new Position((int) (0.5 * 1280),(int) (0.5 * 720)), 100);
+		this.player = new Player(new Position((int) (0.5 * 1280),(int) (0.5 * 720)), 100, parent);
 		this.obstacles= new ArrayList<Obstacle>();
 		for(int i=0; i<0; i++){
 			this.obstacles.add(new Obstacle(new Position(rand.nextInt(this.width),rand.nextInt(this.height)),new Position(20,20)));
 			}
 		this.poolOfBloods= new ArrayList<PoolOfBlood>();
-		this.wave= new Wave(200);
+		this.wave= new Wave(100, player);
 		AStar.create(width, height, player.getPlayerNode());
 		}
 	
@@ -74,10 +74,10 @@ public class Map implements Renderable {
 	 * @param GameContainer container holding the game
 	 * @param delta Time in milliseconds since last update
 	 */
-	public void update(GameContainer container, int delta){
+	public boolean update(GameContainer container, int delta){
 		player.update(delta);
 		player.getWeapon().update(delta);
-		wave.update(delta, this.player);
+		return wave.update(delta);
 		
 	}
 	
@@ -96,7 +96,6 @@ public class Map implements Renderable {
 		result.addAll(poolOfBloods);
 		result.addAll(obstacles);
 		result.addAll(Arrays.asList(wave.getEnemies()));
-		System.out.println(result.size());
 		return Arrays.copyOf(result.toArray(), result.size(), Renderable[].class);//(Renderable[])(result.toArray());
 	}
 	

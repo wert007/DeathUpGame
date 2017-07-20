@@ -19,6 +19,7 @@ public class DeathUpGame extends BasicGame {
 	
 	private Map map;
 	private Renderer renderer;
+	private int state = 1;
 	
 	
 	/**
@@ -38,9 +39,13 @@ public class DeathUpGame extends BasicGame {
 	@Override
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
+		if(state != 1)
+			{
+			g.drawString("GAME OVER", gc.getWidth() / 2 - 50, gc.getHeight() / 2 - 20);
+			return;
+			}
 		renderer.render(g);
-//		return;
-g.drawRect(map.getPlayer().getPosition().getX(), map.getPlayer().getPosition().getY(), 32, 32);
+		g.drawString("Score: " + map.getPlayer().getScore(), 10, 30);
 	}
 
 	/**
@@ -50,13 +55,8 @@ g.drawRect(map.getPlayer().getPosition().getX(), map.getPlayer().getPosition().g
 	 */
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		map = new Map("Arena", 700 * 2, 524 * 2);
+		map = new Map("Arena", 700 * 2, 524 * 2, this);
 		renderer = new Renderer(map);
-	}
-	
-	public void testMethodeZumComitten(int i)
-	{
-		i = 42;
 	}
 
 	/**
@@ -67,8 +67,9 @@ g.drawRect(map.getPlayer().getPosition().getX(), map.getPlayer().getPosition().g
 	 */
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
+		if(state != 1) return;
 		// TODO Auto-generated method stub
-		System.out.println("X: " + map.getPlayer().getPosition().getX() + " Y: " + map.getPlayer().getPosition().getY());
+	//	System.out.println("X: " + map.getPlayer().getPosition().getX() + " Y: " + map.getPlayer().getPosition().getY());
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)) //example
 		{
 			//renderer.Up(delta);
@@ -101,7 +102,8 @@ g.drawRect(map.getPlayer().getPosition().getX(), map.getPlayer().getPosition().g
 		float debugrot = (float)Math.atan2(Mouse.getY() - 524, Mouse.getX() - 700);
 		map.getPlayer().setDirection(Mouse.getX() - gc.getWidth() / 2, -Mouse.getY() + gc.getHeight() / 2);
 		//System.out.println(map.getPlayer().getRotation()+ "");
-		map.update(gc, delta);
+		if(map.update(gc, delta))
+			return;
 		renderer.update(delta);
 		if(Mouse.isButtonDown(0)) //LeftButton
 		{
@@ -122,6 +124,10 @@ g.drawRect(map.getPlayer().getPosition().getX(), map.getPlayer().getPosition().g
 		}
 	}
 	
+	public void endGame()
+	{
+		state = 2;
+	}
 	
 	public static void main(String[] args) throws SlickException {
 		AppGameContainer deathUp = new AppGameContainer(new DeathUpGame("Death Up"));

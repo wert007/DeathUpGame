@@ -30,7 +30,11 @@ public class Bullet extends GameObject {
 		for(CollisionBox c : collisionBox.collideWith())
 		{
 			if(c.getParent() instanceof Enemy)
+			{
+				Enemy e = (Enemy)c.getParent();
+				e.killInstance();
 				return true;
+			}
 			if(c.getParent() instanceof Obstacle)
 				return true;
 			if(c.getParent() instanceof Bullet) //Would be so awesome!

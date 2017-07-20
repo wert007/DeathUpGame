@@ -12,7 +12,8 @@ public class Weapon implements Renderable {
 	
 	private ArrayList<Bullet> bullets;
 	private Player player;
-	
+	private final int cooldown = 7;
+	private int pause;
 	
 	/**
 	 * Creates a new Weapon
@@ -22,6 +23,7 @@ public class Weapon implements Renderable {
 	{
 		this.bullets=new ArrayList<Bullet>();
 		this.player=player;
+		pause = cooldown;
 	}
 	
 	/**
@@ -30,7 +32,9 @@ public class Weapon implements Renderable {
 	 * @param direction Direction in 2 * PI
 	 */
 	public void shoot(float direction) {
+		if(pause != 0) return;
 		bullets.add(new Bullet(player.getPosition(),direction));
+		pause = cooldown;
 	}
 	
 	/**
@@ -49,13 +53,13 @@ public class Weapon implements Renderable {
 	 */
 	public void update(int delta)
 	{
-		
+		pause = Math.max(0, pause - 1);
 		for(int i = 0; i < bullets.size(); i++)
 		{
 			boolean shoot = bullets.get(i).updateBullet(delta);
 			if(shoot)
 			{
-				System.out.println("Bye o7");
+				//bullets.get(i).killInstance();
 				bullets.remove(i);
 			}
 		}

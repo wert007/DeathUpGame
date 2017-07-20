@@ -91,7 +91,8 @@ public class Renderer{
 		}
 		
 	}
-	public void update(int delta){
+	public void update(int delta) throws SlickException{
+		reloadTextures();
 		this.getPos().setX(-this.player.getPosition().getX() + 640);
 		this.getPos().setY(-this.player.getPosition().getY() + 360);
 	}

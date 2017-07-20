@@ -4,38 +4,46 @@
  *
  */
 public class Position {
-	int x;
-	int y;
+	float x;
+	float y;
 	
 	/**
 	 * Creates a new Position
 	 * @param x x-value
 	 * @param y y-value
 	 */
-	public Position(int x, int y)
+	public Position(float x, float y)
 	{
 		this.x = x;
 		this.y = y;
 	}
 	
-	public int getX(){
-		return this.x;	
+	public float getX(){
+		return x;	
 	}
 	
-	public int getY(){
-		return this.y;	
+	public float getY(){
+		return y;	
 	}
 	
-	public void setX(int x){
+	public int getXInt(){
+		return Math.round(x);	
+	}
+	
+	public int getYInt(){
+		return Math.round(y);	
+	}
+	
+	public void setX(float x){
 		this.x = x;
 	}
 	
-	public void setY(int y){
+	public void setY(float y){
 		this.y = y;
 	}
 	
-	public int distance(Position position){
-		return (int)Math.sqrt(Math.pow(this.x - position.getX(), 2) + Math.pow(this.y - position.getY(), 2));
+	public float distance(Position position){
+		return (float) Math.sqrt(Math.pow(this.x - position.getX(), 2) + Math.pow(this.y - position.getY(), 2));
 	}
 }
 

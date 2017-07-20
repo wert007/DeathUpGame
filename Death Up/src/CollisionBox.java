@@ -41,7 +41,7 @@ public class CollisionBox {
 	 */
 	public CollisionBox(Position pos, Position size, GameObject parent)
 	{
-		rectangle = new Rectangle(pos.getX(), pos.getY(), size.getX(), size.getY());
+		rectangle = new Rectangle(pos.getXInt(), pos.getYInt(), size.getXInt(), size.getYInt());
 		this.parent = parent;
 		this.pos = pos;
 		
@@ -75,9 +75,14 @@ public class CollisionBox {
 	 */
 	public void update(Position pos)
 	{
-		this.rectangle.setLocation(pos.getX(), pos.getY());
+		this.rectangle.setLocation(pos.getXInt(), pos.getYInt());
 		this.pos.setX(pos.getX());
 		this.pos.setY(pos.getY());
+	}
+	
+	public void killInstance()
+	{
+		allCollisionBoxes.remove(this);
 	}
 	
 	/**

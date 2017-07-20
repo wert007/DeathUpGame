@@ -11,7 +11,9 @@ public class Player extends GameObject {
 	private Weapon weapon;
 	private float direction;
 	private Node node;
-	public final float SPEED = 100; //Pixels per second
+	private int score = 0;
+	public final float SPEED = 50; //Pixels per second
+	private DeathUpGame game;
 
 	
 	/**
@@ -19,13 +21,14 @@ public class Player extends GameObject {
 	 * @param pos Position of the Player
 	 * @param health Health of the Player
 	 */
-	public Player(Position pos, float health)
+	public Player(Position pos, float health, DeathUpGame game)
 	{
 		super(pos, new Position(64, 64));
 		health = 5;
 		weapon = new Weapon(this);
 		direction = 0f;
 		node = new Node(pos, 1);
+		this.game = game;
 	}
 	/**
 	 * The player walks up
@@ -64,6 +67,16 @@ public class Player extends GameObject {
 		accelerate(new Vector2f(0, SPEED * delta / 1000.0f));
 	}
 	
+	public void higherScore(int add)
+	{
+		score += add;
+	}
+	
+	public int getScore()
+	{
+		return score;
+	}
+	
 	
 	/** 
 	 * Get called when you want to shoot.
@@ -78,7 +91,9 @@ public class Player extends GameObject {
 	 */
 	public void die() 
 	{
-		
+		System.out.println("GAME OVER.");
+		//killInstance();
+		game.endGame();
 	}
 	
 	/**

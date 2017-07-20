@@ -89,8 +89,8 @@ public class AStar {
 	public void update(Player player){
 		for(int i = 0; i < nodes.length; i++){
 			for(int j = 0; j < nodes[1].length; i++){
-				int a = Math.abs(player.getPosition().getX() - nodes[i][j].getPosition().getX());
-				int b = Math.abs(player.getPosition().getY() - nodes[i][j].getPosition().getY());
+				int a = Math.abs(player.getPosition().getXInt() - nodes[i][j].getPosition().getXInt());
+				int b = Math.abs(player.getPosition().getYInt() - nodes[i][j].getPosition().getYInt());
 				double c = Math.pow(a,2) + Math.pow(b, 2);
 				int h = (int)Math.sqrt(c);
 		}
@@ -116,9 +116,14 @@ public class AStar {
 	
 	public Node getRdmSpawn()
 	{
-		int a = rdm.nextInt(nodes.length);
-		int b = rdm.nextInt(nodes[0].length);
-		return nodes[0][0];
+		int x =rdm.nextInt(nodes.length - 1);
+		int y = rdm.nextInt(nodes[0].length - 1);
+		boolean xIsBorder = rdm.nextBoolean();
+		if(xIsBorder)
+			x = 0;
+		else
+			y = 0;
+		return nodes[x][y];
 	}
 	
 	
@@ -140,8 +145,8 @@ public class AStar {
 			
 			if(!closedlist.contains(successor)){
 				//TODO ERROR
-				int a = Math.abs(currentNode.getPosition().getX() - successor.getPosition().getX());
-				int b = Math.abs(currentNode.getPosition().getY() - successor.getPosition().getY());
+				int a = Math.abs(currentNode.getPosition().getXInt() - successor.getPosition().getXInt());
+				int b = Math.abs(currentNode.getPosition().getYInt() - successor.getPosition().getYInt());
 				int g = (int)Math.sqrt(Math.pow(a,2) + Math.pow(b, 2));
 				//TODO ERROR
 				 int tentative_g =  g + 10;

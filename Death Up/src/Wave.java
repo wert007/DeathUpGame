@@ -6,17 +6,21 @@ public class Wave {
 
 	private int targetCountEnemies;
 	private float spawnedCountEnemies;
+	private float oldSpawn;
 	private ArrayList<Enemy> enemies;
-	private final int SECONDSTOSPAWN = 5;
+	private final float SECONDSTOSPAWN = 0.1f;
+	private Player player;
 	
 	/**
 	 * Creates a new Wave
 	 * @param targetCountEnemies Enemies to Spawn
 	 */
-	public Wave(int targetCountEnemies)
+	public Wave(int targetCountEnemies, Player player)
 	{
 		this.targetCountEnemies = targetCountEnemies;
 		spawnedCountEnemies = 0;
+		oldSpawn = 0;
+		this.player = player;
 		enemies = new ArrayList<Enemy>();
 	}
 	/**
@@ -24,24 +28,29 @@ public class Wave {
 	 * @param delta milliseconds since last update call
 	 * @param player Target of the enemies
 	 */
-	public void update(int delta, Player player)
+	public boolean update(int delta)
 	{
-		float spawnThisUpdate = (targetCountEnemies - spawnedCountEnemies) / SECONDSTOSPAWN * delta / 1000.0f; // spawns pro frame
-		spawnedCountEnemies+= spawnThisUpdate;
-		for (int i = 0; i < spawnedCountEnemies - enemies.size(); i++) {
-			enemies.add(new Enemy(AStar.GetInstance().getRdmSpawn()));
+		float spawnThisUpdate =oldSpawn + (targetCountEnemies - spawnedCountEnemies) / SECONDSTOSPAWN * delta / 1000.0f; // spawns pro frame
+		//System.out.println((int)spawnThisUpdate);
+		spawnedCountEnemies+= (int)spawnThisUpdate;
+		
+		for (int i = 0; i < (int)spawnThisUpdate; i++) {
+			enemies.add(new Enemy(AStar.GetInstance().getRdmSpawn(), this, (100 - targetCountEnemies) / 10.0f + 3));
 		}
+		oldSpawn = (int)spawnThisUpdate - spawnThisUpdate;
 		for (int i = enemies.size() - 1; i >= 0; i--) {
-			enemies.get(i).update(player, delta);
-			CollisionBox[] col = enemies.get(i).getCollisionBox().collideWith();
-			
-			for(int j =0; j<col.length; j++){
-				if(col[j].getParent() instanceof Bullet){
-					enemies.remove(i);
-					
-				}
+			if(enemies.get(i).update(player, delta))
+			{
+				return true;
 			}
 		}
+		return false;
+	}
+	
+	public void enemyKilled(Enemy enemy)
+	{
+		player.higherScore(100);
+		enemies.remove(enemy);
 	}
 	
 	/**

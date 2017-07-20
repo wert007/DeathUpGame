@@ -33,7 +33,7 @@ public abstract class GameObject implements Renderable {
 		acceleration = new Vector2f();
 		Position p = collisionBox.getPosition();
 		//TODO: Position with floats???
-		collisionBox.update(new Position(Math.round(p.getX() + velocity.x), Math.round(p.getY() + velocity.y)));
+		collisionBox.update(new Position(p.getX() + velocity.x, p.getY() + velocity.y));
 		velocity = new Vector2f(velocity.x * (1 - getFriction()), velocity.y * (1 - getFriction()));
 	}
 	
@@ -55,6 +55,14 @@ public abstract class GameObject implements Renderable {
 	public CollisionBox getCollisionBox()
 	{
 		return collisionBox;
+	}
+	
+	public void killInstance()
+	{
+		
+		collisionBox.killInstance();
+		collisionBox = null;
+		
 	}
 	
 	/**

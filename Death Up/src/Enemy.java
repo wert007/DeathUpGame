@@ -7,18 +7,21 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public class Enemy extends GameObject{
 	private Node current;
-	private final float SPEED = 0.6f; //Pixels per Second
+	private Wave parent;
+	private float SPEED = 6f; //Pixels per Second
 	private float rotation;
 	
 	/**
 	 * Creates an Enemy at a specific Position (Node).
 	 * @param position Node where the Enemy stands on
 	 */
-	public Enemy(Node position) {
+	public Enemy(Node position, Wave parent, float SPEED) {
 		super(position.getPosition(), new Position(32, 32));
 		// TODO Auto-generated constructor stub
 		current = position;
 		rotation = 0;
+		this.SPEED = SPEED;
+		this.parent = parent;
 	}
 
 	/**
@@ -29,21 +32,35 @@ public class Enemy extends GameObject{
 		
 	}
 	
-	/**
+	 @Override
+	public void killInstance() {
+		super.killInstance();
+		parent.enemyKilled(this);
+	}
+	
+	 /**
 	 * tells the Enemy, where to go
 	 * @param player the position of the Player
 	 */
-	public void update(Player player, int delta)
+	public boolean update(Player player, int delta)
 	{
 		super.update(delta);
 		//TODO implement findPath in Astar
 		
 		//current = AStar.GetInstance().findPath(current, player.getPlayerNode());
-		int xDif = player.getPosition().getX() - getPosition().getX();
-		int yDif = player.getPosition().getY() - getPosition().getY();
-		Vector2f dif =new Vector2f(xDif, yDif).normalise().scale(SPEED);
+		float xDif = player.getPosition().getX() - getPosition().getX();
+		float yDif = player.getPosition().getY() - getPosition().getY();
+		Vector2f dif =new Vector2f(xDif, yDif);
+		if(dif.lengthSquared() < 600)
+		{
+			player.die();
+			return true;
+		}
+		Vector2f dir = dif.normalise().scale(SPEED);
+		//System.out.println(dif);
 		rotation = (float)Math.atan2(yDif, xDif);
-		accelerate(dif);
+		accelerate(dir);
+		return false;
 	}
 
 	@Override
